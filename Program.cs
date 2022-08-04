@@ -12,8 +12,6 @@
     Console.WriteLine();
 }
 
-
-
 void Task26() //Решение через логарифм
 {
     Console.WriteLine("Enter number:");
@@ -93,13 +91,13 @@ void fillArray(int[] collection)
     Random rand = new Random(); 
     for (int i = 0 ; i < size; i++)
     {
-        collection[i] = rand.Next(0, 99);
+        collection[i] = rand.Next(1, 51);
     }
 }
 
-int[] arr = new int[5];
-fillArray(arr);
-PrintArray(arr);
+// int[] arr = new int[5];
+// fillArray(arr);
+// PrintArray(arr);
 
 int partition (int[] array, int start, int end)
 {
@@ -132,5 +130,82 @@ void quicksort (int[] array, int start, int end)
        quicksort (array, pivot+1, end);
    }
 
-quicksort(arr, 0, 4);
-PrintArray(arr);
+// quicksort(arr, 0, 4);
+// PrintArray(arr);
+
+//Extra tasks
+
+string ReverseString(string s)
+    {
+    char[] arr = s.ToCharArray();
+    Array.Reverse(arr);
+    return new string(arr);
+    }
+
+void Task01()
+{
+    Console.WriteLine("Enter number:");
+    int number = Convert.ToInt32(Console.ReadLine());
+    string bin = Convert.ToString(number, 2);
+    
+    if (bin == ReverseString(bin))
+    {
+        Console.WriteLine($"Bin number {bin} is palindrom");
+    }
+    else Console.WriteLine($"{bin} is not palindrom");
+}
+
+// Task01();
+
+void Task02()
+
+{
+    Random rand = new Random();
+    int number = rand.Next(1, 11);
+    int size = number * number;
+    int[] arr = new int[size];
+    int i = 0;
+
+    while (i < number)
+    {
+        arr[rand.Next(0, size)] = 1;
+        i++;
+    }
+    Console.WriteLine(size);
+    PrintArray(arr);
+}
+// Task02();
+
+void Task03()
+{
+    int size = 20;
+    int[] arr = new int[size];
+    fillArray(arr);
+    PrintArray(arr);
+    int maxFrq = 1;
+    int maxS = arr[0];    
+
+    for (int i = 0; i < size-1; i++)
+    {
+        int frq = 1;
+        for (int j = i+1; j < size; j++)
+        {
+            if (arr[i] == arr[j])
+            {
+                frq++;
+            }
+        }
+        if (frq > maxFrq)
+        {
+            maxFrq = frq;
+            maxS = arr[i];
+        }
+    }
+    if (maxFrq > 1)
+    {
+        Console.WriteLine($"Number {maxS} appears {maxFrq} times");     
+    }
+    else Console.WriteLine("All numbers unique");
+
+}
+Task03();
